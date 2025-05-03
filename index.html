@@ -59,6 +59,28 @@
             }
         }
     </style>
+    <script>
+        // Automatyczne przekierowanie na podstawie języka przeglądarki
+        window.onload = function() {
+            const userLang = navigator.language || navigator.userLanguage;
+            let redirectUrl = "privacy_policy_en.html"; // Domyślny język: angielski
+
+            if (userLang.startsWith("pl")) {
+                redirectUrl = "privacy_policy_pl.html";
+            } else if (userLang.startsWith("de")) {
+                redirectUrl = "privacy_policy_de.html";
+            } else if (userLang.startsWith("fr")) {
+                redirectUrl = "privacy_policy_fr.html";
+            } else if (userLang.startsWith("es")) {
+                redirectUrl = "privacy_policy_es.html";
+            }
+
+            // Przekieruj tylko, jeśli użytkownik jeszcze nie wybrał języka ręcznie
+            if (!window.location.hash) {
+                window.location.href = redirectUrl;
+            }
+        };
+    </script>
 </head>
 <body>
     <div class="container">
